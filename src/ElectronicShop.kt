@@ -13,18 +13,21 @@ fun getMoneySpent(keyboards: Array<Int>, drives: Array<Int>, b: Int): Int? {
      * Write your code here.
      */
     var result: MutableList<Int> = ArrayList()
+    var highest: MutableList<Int> = ArrayList()
     keyboards.forEach { i ->
         drives.forEach { j ->
             result.add(i + j)
         }
     }
     result.forEach { i ->
-        if (i<=b)
-          println(i)
+        if (i<=b) {
+            highest.add(i)
+        }
+        else {
+            highest.add(-1)
+        }
     }
-    var maxValue: Int? = result.max()
-    //result.takeWhile {  }
-    return maxValue
+    return highest.max()
 
 }
 
