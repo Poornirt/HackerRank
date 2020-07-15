@@ -18,7 +18,6 @@ fun catAndMouse(x: Int, y: Int, z: Int): String {
     }
 
     return result
-
 }
 
 fun main(args: Array<String>) {
@@ -39,5 +38,5 @@ fun main(args: Array<String>) {
 
         println(result)
     }
-
+    
 }
