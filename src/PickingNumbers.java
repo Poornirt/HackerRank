@@ -29,8 +29,26 @@ class Result {
             res.add(a.get(i));
             listHashMap.put(i, res);
         }
-        System.out.println(listHashMap);
-        return 0;
+        List<Integer> tempList;
+        List<Integer> tempListSize = new ArrayList<>();
+        for(Map.Entry<Integer, List<Integer>> map:listHashMap.entrySet()){
+            if(map.getValue().size()>1){
+                tempList=new ArrayList<>();
+                tempList.addAll(map.getValue());
+                for (int i=0;i<tempList.size();i++) {
+                    for (int j=i;j<tempList.size()-1;j++) {
+                        if (Math.abs(tempList.get(i) - tempList.get(j + 1)) > 1) {
+                            tempList.remove(j+1);
+                            j--;
+                            break;
+                        }
+                    }
+                }
+                tempListSize.add(tempList.size());
+            }
+        }
+        Collections.sort(tempListSize);
+        return tempListSize.get(tempListSize.size()-1);
     }
 
 }
@@ -53,8 +71,7 @@ public class PickingNumbers {
 
         int result = Result.pickingNumbers(a);
 
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
+        System.out.println(result);
 
         bufferedReader.close();
         bufferedWriter.close();
