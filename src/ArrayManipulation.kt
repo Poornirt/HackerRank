@@ -20,22 +20,27 @@ import kotlin.text.*
 // Complete the arrayManipulation function below.
 fun arrayManipulation(n: Int, queries: Array<Array<Int>>): Long {
     var i = 0
-    var result =0
-    var list = IntArray(n+1)
+    var result: Long = 0L
+    val list = IntArray(n+1)
     while (i < queries.size) {
-        var start = queries[i][0]
+        val start = queries[i][0]
         var end = queries[i][1]
-        list[--start] += queries[i][2]
+        list[start] += queries[i][2]
         list[end] -= queries[i][2]
         i = i.inc()
     }
     list.forEach {
-        if(it>0)
+        if(it>0) {
+            println(it)
             result += it
+        }
     }
-    return result.toLong()
+    return result
 }
-
+//10 3
+//1 5 3
+//4 8 7
+//6 9 10
 fun main(args: Array<String>) {
     val scan = Scanner(System.`in`)
 
